@@ -54,7 +54,9 @@ $config = [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'employees'
+                    'controller' => 'employees',
+                    // Se quiser bloquear método delete
+                    // 'except' => ['delete']
                 ]
             ],
         ],
