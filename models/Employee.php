@@ -62,4 +62,9 @@ class Employee extends \yii\db\ActiveRecord
         return ['jobTitle'];
     }
 
+    public function formName()
+    {
+        return 'Employee';
+    }
+
 }

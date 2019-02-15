@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\EmployeeProviders;
 use yii\rest\ActiveController;
 
 class EmployeesController extends ActiveController
@@ -12,5 +13,23 @@ class EmployeesController extends ActiveController
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'data'
     ];
+
+    public function actions()
+    {
+        $actions = parent::actions();
+
+        $actions['index']['prepareDataProvider'] = [$this, 'carregaDataProvider'];
+
+        return $actions;
+    }
+
+    public function carregaDataProvider()
+    {
+        $params = \Yii::$app->request->queryParams;
+
+        $provider = new EmployeeProviders();
+
+        return $provider->search($params);
+    }
 
 }
