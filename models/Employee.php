@@ -51,4 +51,15 @@ class Employee extends \yii\db\ActiveRecord
             'avatar' => 'Avatar',
         ];
     }
+
+    public function getJobTitle()
+    {
+        return $this->hasOne(JobTitle::className(), ['id' => 'job_title_id']);
+    }
+
+    public function extraFields()
+    {
+        return ['jobTitle'];
+    }
+
 }
